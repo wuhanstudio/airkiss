@@ -5,12 +5,9 @@
 #include <WiFiUdp.h>
 #include <airkiss.h>
 
-#define DEFAULT_LAN_PORT  12476
-
 void initNetConfig();
-bool startAirkiss();
+void startAirkiss();
 void deleteConfig();
-
 String getMacAddress();
 
 #endif

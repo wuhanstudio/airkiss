@@ -18,8 +18,7 @@ ESP8266WebServer server(80);                          //open webserver on port 8
 
 //reply to "status"
 void SendStatus() {
-  String message = "ok";
-  server.send(200, "text/plain", message);
+  server.send(200, "text/plain", "ok");
   Serial.println("...");
 }
 //reply to "temp"

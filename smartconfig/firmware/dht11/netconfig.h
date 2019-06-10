@@ -9,4 +9,5 @@ void initNetConfig();
 void startAirkiss();
 void deleteConfig();
 String getMacAddress();
+
 #endif
