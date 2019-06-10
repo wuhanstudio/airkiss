@@ -1,0 +1,24 @@
+{
+  "name": "bicover-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec 'npm test'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.4",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "expect": "^24.8.0",
+    "mocha": "^6.1.4"
+  }
+}
