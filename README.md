@@ -6,7 +6,7 @@
 
 这是各个传感器通过 Airkisss 陆续上线的网页应用 demo
 
-![demo](/home/wuhanstudio/airkiss/demo.gif)
+![demo](./demo.gif)
 
 
 ## 项目结构
