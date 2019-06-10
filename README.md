@@ -59,7 +59,7 @@
 
      - [yulong88888](https://github.com/yulong88888/Arduino_ESP8266_WeChat_AirkissAndNFF) (Arduino)
 
- - RT-Thread
+   - RT-Thread
 
      - [heyuanjie87](http://packages.rt-thread.org/itemDetail.html?package=airkissOpen)
 
