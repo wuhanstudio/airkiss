@@ -1,12 +1,8 @@
 {
     "test": {
-        "PORT": 5000,
-        "MONGODB_URI": "127.0.0.1:27017/bicover"
+        "PORT": 5000
     },
     "development":{
-        "PORT": 5000,
-        "USER": "tpl",
-        "PASSWORD": "energy615",
-        "MONGODB_URI": "123.207.116.104:27017/bicover?authSource=user"
+        "PORT": 5000
     }
 }
