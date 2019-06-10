@@ -13,7 +13,7 @@ void myPrint(const char* message)
   u8g2.setFont(u8g2_font_ncenB08_tr);     // choose a suitable font
   u8g2.drawStr(0, 10, message);           // write something to the internal memory
   u8g2.sendBuffer();                      // transfer internal memory to the display
-  delay(1000);
+  delay(10000);
 }
 
 //初始化提示灯和连接上一次wifi
