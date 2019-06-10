@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+    <!-- Font Style -->
+    <link rel="stylesheet" type="text/css" href="resources/css/font.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/fontawesome.css">
+
+    <!-- Grid -->
+    <link rel="stylesheet" type="text/css" href="resources/css/grid.css">
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/queries.css">
+    <link rel="stylesheet" href="resources/css/button.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Airkiss</title>
+</head>
+
+<body>
+    <section>
+    <div id="fullpage">
+        <!-- Hust & TPL -->
+        <div class="section" id="section4">
+
+            <div class="app">
+            <div class="row avatar">
+                <div class="col span-1-of-2">
+                    <p>开关设备</p> 
+                </div>
+                <div class="col span-1-of-2">
+                    <p>Switches</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="row item app">
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendRelay(0)">
+                        <img src="resources/img/air.png" alt="" id="device_0">
+                    </a>
+                    <p class="title">空调</p> 
+                    
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendRelay(1)">
+                        <img src="resources/img/printer.png" alt="" id="device_1">
+                    </a>
+                    <p class="title">打印机</p>
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendRelay(2)">
+                        <img src="resources/img/scanner.png" alt="" id="device_2">
+                    </a>
+                    <p class="title">扫描仪</p>
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendRelay(3)">
+                        <img src="resources/img/computer.png" alt="" id="device_3">
+                    </a>
+                    <p class="title">电脑</p>
+                </div>
+            </div>
+
+            <div class="app">
+                <div class="row avatar">
+                <div class="col span-1-of-2">
+                    <p>温湿度计</p> 
+                </div>
+                <div class="col span-1-of-2">
+                    <p>DHT11</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="row item printer">
+                <div class="col span-1-of-4 device">
+                    <a>
+                        <img src="resources/img/humid.png" alt="" id="device_4">
+                    </a>
+                    <p class="title">温湿度计</p> 
+                    <p class="title" id="dht11">25C 60%</p> 
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a>
+                        <img src="resources/img/temp.png" alt="" id="device_5">
+                    </a>
+                    <p class="title">环境温度</p>
+                    <p class="title" id="ds18b20">25C</p> 
+                </div>
+            </div>
+
+            <div class="monitor">
+            <div class="row avatar">
+                <div class="col span-1-of-2">
+                    <p>液晶显示</p> 
+                </div>
+                <div class="col span-1-of-2">
+                    <p>LCD</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="row item monitor">
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendStr(6)">
+                        <img src="resources/img/i2c.png" alt="" id="device_6">
+                    </a>
+                    <p class="title">I2C</p>
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendStr(7)">
+                        <img src="resources/img/spi.png" alt="" id="device_7">
+                    </a>
+                    <p class="title">SPI</p> 
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendStr(8)">
+                        <img src="resources/img/1602.png" alt="" id="device_8">
+                    </a>
+                    <p class="title">1602</p>
+                </div>
+                <div class="col span-1-of-4 device">
+                    <a onclick="sendStr(9)">
+                        <img src="resources/img/12864.png" alt="" id="device_9">
+                    </a>
+                    <p class="title">128_64</p> 
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <!-- <div class="row footer">
+                <div class="row">
+                    <p>
+                        Copyright &copy; 2019 by WuhanStudio. All rights reserved.
+                    </p>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+    </section>
+
+    <script>
+        window.onload = function() {
+            // updateSensor();        
+            this.setInterval(() => {
+                for (var i = 0; i < 10; i++) {
+                    updateDevice(i);
+                };
+            }, 5000);
+        }
+
+        function updateDevice(i) {
+                var urlDevice = "http://192.168.199.209:5000/status?id=" + i;
+                // console.log(urlDevice);
+                var deviceName = "device_" + i;
+                // console.log(deviceName);
+                var xmlHttpDevice = new XMLHttpRequest();
+                xmlHttpDevice.onreadystatechange = function() { 
+                    var x = document.getElementById(deviceName);
+                    if (xmlHttpDevice.readyState == 4 && xmlHttpDevice.status == 200) {
+                        // console.log('Result from: ' + deviceName);
+                        // console.log(xmlHttpDevice.responseText);
+                        if(xmlHttpDevice.responseText === "1")
+                        {
+                            x.style.opacity = "1.0";
+                            if(deviceName === "device_4")
+                            {
+                                // console.log('Get DHT11');
+                                updateDHT11();
+                            }
+                            if(deviceName === "device_5")
+                            {
+                                //updateDS18B20();
+                            }
+                        }
+                        else
+                        {
+                            x.style.opacity = "0.3";
+                        }
+                    }
+                    else {
+                        x.style.opacity = "0.3";
+                    }
+                }
+                xmlHttpDevice.open("GET", urlDevice, true); // true for asynchronous 
+                xmlHttpDevice.send(null);           
+        }
+
+        function updateDHT11() {
+            var urlTemp = "http://192.168.199.209:5000/temp?id=4";
+            var xmlHttpTemp = new XMLHttpRequest();
+            xmlHttpTemp.onreadystatechange = function() { 
+                if (xmlHttpTemp.readyState == 4 && xmlHttpTemp.status == 200) {
+                    // console.log("Temp OK");
+                    console.log(xmlHttpTemp.responseText);
+                    if(xmlHttpTemp.responseText !== '0')
+                    {
+                        var tempLabel = document.getElementById("dht11");
+                        var temp = tempLabel.innerHTML.split(' ');
+                        tempLabel.innerHTML = xmlHttpTemp.responseText + 'C' + ' ' + temp[1];
+                    }
+                    // var urlHumid = "http://192.168.199.209:5000/humid?id=4";
+                    // var xmlHttpHumid = new XMLHttpRequest();
+                    // xmlHttpHumid.onreadystatechange = function() { 
+                    //     if (xmlHttpHumid.readyState == 4 && xmlHttpHumid.status == 200) {
+                    //         console.log("Humid OK");
+                    //         console.log(xmlHttpTemp.responseText);
+                    //         var humidLabel = document.getElementById("dht11");
+                    //         var humid = humidLabel.innerHTML.split(' ');
+                    //         humidLabel.innerHTML = humid[0] + ' ' + xmlHttpHumid.responseText + '%';
+                    //     }
+                    //     else {
+                    //         console.log("Error");
+                    //         console.log(xmlHttpHumid.responseText);
+                    //     }
+                    // }
+                    // xmlHttpHumid.open("GET", urlHumid, true); // true for asynchronous 
+                    // xmlHttpHumid.send(null);
+                }
+                else {
+                    // console.log("Error");
+                    // console.log(xmlHttpTemp.responseText);
+                }
+            }
+            xmlHttpTemp.open("GET", urlTemp, true); // true for asynchronous 
+            xmlHttpTemp.send(null);
+        }
+
+        function sendRelay(i) {
+            var url = "http://192.168.199.209:5000/switch?id=" + i;
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() { 
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    if(xmlHttp.responseText === 'ok'){
+                        alert('切换成功');
+                    }
+                    else {
+                        alert(xmlHttp.responseText);
+                        alert('切换失败');
+                    }
+            }
+            xmlHttp.open("GET", url, true); // true for asynchronous 
+            xmlHttp.send(null);
+        }
+
+        function sendStr(i) {
+            var url = "http://192.168.199.209:5000/display?id=" + i + "&data=Unique_Hackday";
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() { 
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    if(xmlHttp.responseText === 'ok'){
+                        alert('发送成功');
+                    }
+                    else {
+                        alert(xmlHttp.responseText);
+                        alert('发送失败');
+                    }
+            }
+            xmlHttp.open("GET", url, true); // true for asynchronous 
+            xmlHttp.send(null);
+        }
+
+    </script>
+</body>
+
+</html>

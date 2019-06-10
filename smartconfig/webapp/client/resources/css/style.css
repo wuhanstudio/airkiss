@@ -1,0 +1,231 @@
+/* ------------------------- */
+
+/*       Basic Setup         */
+
+/* ------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #000000;
+    color: #555;
+    font-family: 'Lato', 'Arial', 'sans-serif';
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+}
+
+p {
+    color: #FFF;
+}
+
+.clearfix {
+    zoom: 1
+}
+
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* ------------------------- */
+
+/* Reusable Components       */
+
+/* ------------------------- */
+
+/*  Headings */
+
+h1, h2, h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    color: #000;
+    font-size: 240%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 110%;
+    margin: 10px;
+}
+
+h4 {
+    font-size: 80%;
+    letter-spacing: 1px;
+    margin: 5px;
+}
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    color: #e67e22;
+    font-size: 120%;
+    margin-left: 8px;
+    margin-right: -3px;
+    /*secrets to align text and icons*/
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+/* ------------------------- */
+
+/*         Profile           */
+
+/* ------------------------- */
+
+.avatar {
+    width: 94%;
+    border-bottom: #333 solid 2px;
+    padding-bottom: 0;
+    padding-top: 1%;
+    font-size: 120%;
+    margin-left: 3%;
+}
+
+.avatar div:first-child {
+    text-align: left;
+}
+
+.avatar div:last-child {
+    text-align: right;
+    color: red;
+}
+
+.device p {
+    color: #AAA;
+}
+
+.item{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.title {
+    text-align: center;
+    bottom: 0%;
+}
+
+.item img {
+    opacity: 0.3;
+}
+
+.item img {
+    /* position: absolute; */
+    width: 26%;
+    height: 26%;
+    top: 1%;
+    margin-left: 37%;
+    margin-bottom: 3%;
+    transition: transform 0.5s, opacity 0.5s ease-in-out;
+}
+
+.text {
+    /* position: absolute; */
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 13%;
+    /* border: 1px solid #000; */
+    color: black;
+}
+
+.sensor {
+    visibility:hidden;
+}
+
+.wuhan{
+    border-radius: 20%;
+}
+
+.item a:link, .item a:visited{
+    text-decoration: none;
+}
+
+.item a.clear {
+    clear: both;
+}
+
+.item img:hover{
+    transform: scale(1.08);
+    opacity: 0.8;
+}
+
+.ml{
+    background-color: #F9F9F9;
+}
+
+.project{
+    background-color: #F9F9F9;
+}
+
+/* ------------------------- */
+
+/*         Footer            */
+
+/* ------------------------- */
+
+.footer {
+    width: 100%;
+    background-color: #333;
+    font-size: 80%;
+}
+
+.footer p {
+    display: block;
+    color: #AAA;
+    font-size: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.hust {
+    float: left;
+    margin-top:1%;
+    margin-bottom:1%;
+    margin-left: 5%;
+    width: 20%;
+}
+
+.tpl {
+    float: right;
+    margin-bottom:1%;
+    margin-top:1%;
+    margin-right: 8%;
+    width: 17%;
+}
+
+.restart {
+    color: Dodgerblue;
+}
+
+.restarting {
+    color: Tomato;
+}
