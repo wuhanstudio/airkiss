@@ -1,7 +1,5 @@
-const axios = require('axios');
-
 require('./config/config');
-
+const axios = require('axios');
 // http socket
 const http = require('http');
 // API Server
@@ -12,14 +10,11 @@ const bodyParser    = require('body-parser');
 const devices = new Array(10);
 for (let i = 0; i < devices.length; i++) {
     devices[i] = {};
-    
-}
-var isRealString = (str) => {
-    return typeof str ===  'string' && str.trim().length > 0;
 }
 
 // New API Server
 var app = express();
+const port = process.env.PORT;
 
 app.use(function(req, res, next) {
     // Allow CORS
@@ -27,7 +22,6 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -85,13 +79,13 @@ app.get('/switch', async (req, res) => {
             }
             else
             {
-                console.log(`Switch ${id} fail`);    
-                console.log(response.data);    
+                console.log(`Switch ${id} fail`);
+                // console.log(response.data);
                 res.send('fail');
             }
         })
         .catch((error) => {
-            console.log(`Switch ${id} fail`);    
+            console.log(`Switch ${id} fail`);
             res.send('fail');
         });
     }
@@ -122,20 +116,20 @@ app.get('/temp',async (req, res) => {
             }
             else
             {
-                console.log(`Get temp ${id} error`);    
-                console.log(response.data);    
+                console.log(`Get temp ${id} error`);
+                // console.log(response.data);
                 res.send('0');
             }
         })
         .catch((error) => {
-            console.log(`Get temp ${id} fail`);    
+            // console.log(`Get temp ${id} fail`);    
             // console.log(error);
             res.send('0');
         });
     }
     else
     {
-        console.log('get temp offline');
+        // console.log('get temp offline');
         res.send('0');
     }
 });
@@ -154,26 +148,26 @@ app.get('/humid',async (req, res) => {
             // console.log(response.data);
             if(response.data)
             {
-                console.log('Humid');
-                console.log(response.data);
+                // console.log('Humid');
+                // console.log(response.data);
                 res.send(String(response.data));
             }
             else
             {
-                console.log(`Get humid ${id} error`);    
-                console.log(response.data);    
+                // console.log(`Get humid ${id} error`);
+                // console.log(response.data);
                 res.send('0');
             }
         })
         .catch((error) => {
-            console.log(`Get humid ${id} fail`);    
+            console.log(`Get humid ${id} fail`);
             console.log(error);
-            // res.send('0');
+            res.send('0');
         });
     }
     else
     {
-        console.log('get humid offline');
+        // console.log('get humid offline');
         res.send('0');
     }
 });

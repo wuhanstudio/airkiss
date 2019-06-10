@@ -205,27 +205,3 @@ h4 {
     margin-bottom: 30px;
     text-align: center;
 }
-
-.hust {
-    float: left;
-    margin-top:1%;
-    margin-bottom:1%;
-    margin-left: 5%;
-    width: 20%;
-}
-
-.tpl {
-    float: right;
-    margin-bottom:1%;
-    margin-top:1%;
-    margin-right: 8%;
-    width: 17%;
-}
-
-.restart {
-    color: Dodgerblue;
-}
-
-.restarting {
-    color: Tomato;
-}
