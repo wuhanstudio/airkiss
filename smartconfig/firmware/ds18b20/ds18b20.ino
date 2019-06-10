@@ -7,7 +7,7 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include "netconfig.h"
-#include "DHTesp.h"
+
 
 #define ONE_WIRE_BUS 2
 OneWire oneWire(ONE_WIRE_BUS);
