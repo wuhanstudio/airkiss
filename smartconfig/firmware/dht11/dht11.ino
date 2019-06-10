@@ -17,17 +17,20 @@ ESP8266WiFiMulti WiFiMulti;
 ESP8266WebServer server(80);                          //open webserver on port 80
 
 //reply to "status"
-void SendStatus() {
+void SendStatus()
+{
   server.send(200, "text/plain", "ok");
   Serial.println("...");
 }
 //reply to "temp"
-void SendTemp() {
+void SendTemp()
+{
   delay(dht.getMinimumSamplingPeriod());
   server.send(200, "text/plain", String(dht.getTemperature()));
 }
 //reply to "humid"
-void Sendhumid() {
+void Sendhumid()
+{
   delay(dht.getMinimumSamplingPeriod());
   server.send(200, "text/plain", String(dht.getHumidity()));
 }
@@ -65,11 +68,13 @@ void setup()
         //start connection and send HTTP header
         int httpCode = http.GET();
         //httpCode will be negative on error
-        if (httpCode > 0) {
+        if (httpCode > 0)
+        {
           //HTTP header has been send and Server response header has been handled
           Serial.printf("[HTTP] GET... code: %d\n", httpCode);
           //file found at server
-          if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {
+          if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY)
+          {
             String payload = http.getString();
             Serial.println(payload);
           }

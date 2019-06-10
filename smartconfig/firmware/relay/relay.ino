@@ -13,12 +13,14 @@ ESP8266WiFiMulti WiFiMulti;
 ESP8266WebServer server(80);                          //open webserver on port 80
 
 //reply to "status"
-void SendStatus() {
+void SendStatus()
+{
   String message = "ok";
   server.send(200, "text/plain", message);
 }
 //reply to "switch"
-void Switch() {
+void Switch()
+{
   String message = "ok";
   digitalWrite(0, LOW);
   delay(1000);
@@ -27,7 +29,8 @@ void Switch() {
 
 }
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   //init relay
   pinMode(0, OUTPUT);
@@ -58,11 +61,13 @@ void setup() {
         //start connection and send HTTP header
         int httpCode = http.GET();
         //httpCode will be negative on error
-        if (httpCode > 0) {
+        if (httpCode > 0)
+        {
           //HTTP header has been send and Server response header has been handled
           Serial.printf("[HTTP] GET... code: %d\n", httpCode);
           //file found at server
-          if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {
+          if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY)
+          {
             String payload = http.getString();
             Serial.println(payload);
           }
@@ -86,7 +91,8 @@ void setup() {
   }
 }
 
-void loop() {
+void loop()
+{
   //waiting for get
   server.handleClient();
 }

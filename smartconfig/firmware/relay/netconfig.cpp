@@ -5,7 +5,8 @@ unsigned long time1;                      //recode Connecting time
 unsigned long time2;                      //recode Connecting time
 
 //初始化提示灯和连接上一次wifi
-void initNetConfig() {
+void initNetConfig()
+{
   //初始化设备ID
   DEVICE_ID = DEVICE_ID + WiFi.softAPmacAddress().c_str();
   Serial.print("Device:");
@@ -13,13 +14,16 @@ void initNetConfig() {
 }
 
 //启动airkiss
-void startAirkiss() {
-Serial.println("start airkiss...");
+void startAirkiss()
+{
+  Serial.println("start airkiss...");
   WiFi.mode(WIFI_STA);
   WiFi.beginSmartConfig();
-  while (1) {
+  while (1)
+  {
     Serial.print(".");
-    if (WiFi.smartConfigDone()) {
+    if (WiFi.smartConfigDone())
+    {
       Serial.println("");
       Serial.println("airkiss Success");
       Serial.printf("SSID:%s\r\nPSW:%s\r\n", WiFi.SSID().c_str(), WiFi.psk().c_str());
@@ -28,13 +32,15 @@ Serial.println("start airkiss...");
       time1 = millis();
       time2 = millis();
       WiFi.begin(WiFi.SSID().c_str(), WiFi.psk().c_str());
-      while (WiFi.status() != WL_CONNECTED && (time2 - time1 < 10000)) {
+      while (WiFi.status() != WL_CONNECTED && (time2 - time1 < 10000))
+      {
         delay(500);
         Serial.print(".");
         time2 = millis();
       }
       //长时间未连接
-      if(time2 - time1 >= 10000){
+      if(time2 - time1 >= 10000)
+      {
         //重启芯片 等待重新接收包
         deleteConfig();
       }
@@ -45,7 +51,8 @@ Serial.println("start airkiss...");
 }
 
 //删除wifi连接记录并重启
-void deleteConfig() {
+void deleteConfig()
+{
   ESP.eraseConfig();
   delay(100);
   ESP.reset();
@@ -53,6 +60,7 @@ void deleteConfig() {
 }
 
 //获取mac地址
-String getMacAddress() {
+String getMacAddress()
+{
   return DEVICE_ID;
 }
