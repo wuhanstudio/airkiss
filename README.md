@@ -68,4 +68,4 @@
 
 - 维护：吴晗 张信峰
 - 主页：<http://wuhanstudio.cc>
-- 邮箱：https://github.com/wuhanstudio/airkiss/issues
+- 联系：https://github.com/wuhanstudio/airkiss/issues
